@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>India UG Scholarships 2026 | Recent Openings</title>
+<style>
+  :root {
+    --bg: #0f172a;
+    --card: #1e293b;
+    --accent: #38bdf8;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --success: #4ade80;
+    --warning: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 20px;
+  }
+  header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+  }
+  h1 { font-size: 2.2rem; background: linear-gradient(90deg, #38bdf8, #818cf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: var(--muted); margin-top: 8px; font-size: 1rem; }
+  .controls {
+    max-width: 900px;
+    margin: 0 auto 30px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  input, select {
+    padding: 12px 16px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: var(--text);
+    font-size: 1rem;
+    min-width: 220px;
+  }
+  input:focus, select:focus { outline: 2px solid var(--accent); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 20px;
+    border: 1px solid #334155;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+  }
+  .card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15); }
+  .card h2 { font-size: 1.25rem; margin-bottom: 10px; color: var(--accent); }
+  .amount { font-size: 1.4rem; font-weight: 700; color: var(--success); margin: 8px 0; }
+  .meta { color: var(--muted); font-size: 0.9rem; margin: 4px 0; }
+  .eligibility { margin-top: 12px; font-size: 0.92rem; line-height: 1.5; flex-grow: 1; }
+  .deadline {
+    display: inline-block;
+    background: #334155;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-top: 12px;
+  }
+  .deadline.urgent { background: #7f1d1d; color: #fecaca; }
+  .source { font-size: 0.75rem; color: var(--muted); margin-top: 10px; }
+  footer {
+    text-align: center;
+    margin-top: 50px;
+    color: var(--muted);
+    font-size: 0.85rem;
+    padding: 20px;
+  }
+  .no-results { text-align: center; grid-column: 1/-1; padding: 40px; color: var(--muted); }
+  @media (max-width: 600px) {
+    h1 { font-size: 1.6rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🎓 India Undergraduate Scholarships</h1>
+  <p class="subtitle">Recently published / open applications (as of 22 Nov 2026) • Data compiled from official announcements & portals</p>
+</header>
+
+<div class="controls">
+  <input type="text" id="search" placeholder="Search by name or keyword..." oninput="filterScholarships()">
+  <select id="sort" onchange="filterScholarships()">
+    <option value="deadline">Sort by Deadline (soonest)</option>
+    <option value="amount">Sort by Amount (highest)</option>
+    <option value="name">Sort by Name</option>
+  </select>
+</div>
+
+<div class="grid" id="grid"></div>
+
+<footer>
+  <p>⚠️ Always verify latest details, eligibility, and deadlines on official portals (scholarships.gov.in, Buddy4Study, university sites, etc.). Amounts and dates are based on announcements as of late November 2026.</p>
+  <p style="margin-top:8px;">Built as a single-file HTML app • Hosted via GitHub Pages</p>
+</footer>
+
+<script>
+const scholarships = [
+  {
+    name: "INSPIRE-SHE Scholarship 2026 (DST)",
+    amount: "₹80,000 / year (₹5,000/month + ₹20,000 research grant)",
+    deadline: "2026-12-07",
+    eligibility: "Age 17–22; Class 12 in 2025; enrolled in BSc/BS/Integrated in basic & natural sciences (Physics, Chem, Math, Bio, etc.). Qualify via top 1% board marks, top 10,000 JEE Main/Advanced/NEET, or NTSE/JBNSTS/Olympiad medals.",
+    source: "online-inspire.gov.in • Announced ~16 Nov 2026"
+  },
+  {
+    name: "Ashoka University UG Scholarships 2027 (incl. National Science Talent)",
+    amount: "Up to 100% tuition waiver (500 scholarships: 300 need-based + 200 merit, 50 Science Talent)",
+    deadline: "2026-11-23",
+    eligibility: "Applicants for Ashoka University undergraduate programmes 2027. Science Talent (CS/Physics/Math): high performers in IIT-JEE, IISER, CMI entrances or Indian National Olympiads. Need-based also available.",
+    source: "Ashoka University • Round 1 deadline 23 Nov 2026"
+  },
+  {
+    name: "Rolls-Royce Wings4Her Scholarship 2026-27",
+    amount: "₹75,000 per year",
+    deadline: "2026-11-23",
+    eligibility: "Female students in 1st or 2nd year of UG engineering at AICTE-recognised institutions. ≥60% in Class 10, 12 & latest semester. Family income ≤ ₹4 lakh/year. Preference for PwD, single-parent, orphans, aspirational districts, certain branches.",
+    source: "Buddy4Study / Rolls-Royce"
+  },
+  {
+    name: "Colgate Keep India Smiling Scholarship for BDS Students 2026-27",
+    amount: "₹75,000 (one-time)",
+    deadline: "2026-11-30",
+    eligibility: "Indian nationals in any year of BDS or MDS. ≥65% in Class 12; BDS 2nd+ year ≥60% last semester; MDS >60% overall BDS. Parental income ≤ ₹8 lakh. Preference: Maharashtra, Goa, Gujarat, Himachal Pradesh, Andhra Pradesh.",
+    source: "Buddy4Study / Colgate-Palmolive"
+  },
+  {
+    name: "ONGC Merit Scholarship 2026-27",
+    amount: "₹48,000 per annum",
+    deadline: "2026-11-30",
+    eligibility: "First-year students in Engineering, MBBS, MBA, or Master’s in Geology/Geophysics. SC/ST/OBC/EWS General categories. ≥60% marks or 6.0 CGPA. Age under 31. Applicable family income criteria.",
+    source: "ONGC Foundation / Buddy4Study"
+  },
+  {
+    name: "Vylor Agritech Scholarship FY 2026-27",
+    amount: "₹25,000 / year (UG); up to ₹35,000 (PG/PhD)",
+    deadline: "2026-11-30",
+    eligibility: "Any year of UG/PG/PhD in Agriculture & allied fields at eligible govt institutions (IITs, NITs, IISc, ICAR, State Agri Universities). Family income ≤ ₹6 lakh/year. Preference to female students.",
+    source: "Buddy4Study / Vylor"
+  },
+  {
+    name: "Nirankari Rajmata Scholarship Scheme 2026-27",
+    amount: "Up to ₹75,000 tuition fee waiver per year",
+    deadline: "2026-11-30",
+    eligibility: "Regular students of Central/State recognised institutions admitted via competitive exam. ≥90% in Class 12. Family income < ₹5 lakh (check official). Courses: Engineering, Medicine (Allopathic/Ayurvedic/Homeo), MBA/PGDM, Architecture, CA, CFA, LLB, Journalism, etc. Offline application.",
+    source: "Sant Nirankari Charitable Foundation"
+  },
+  {
+    name: "Foundation for Excellence (FFE) Scholarship for Technical Courses 2026",
+    amount: "₹50,000 + additional benefits",
+    deadline: "2026-12-31",
+    eligibility: "First-year students of BE/BTech, Integrated MTech, MBBS, or 5-year Law programmes (admitted 2025-26). ≥70% in Class 12 (passed 2022 or later). Family income ≤ ₹4 lakh. Admission through merit-based entrance/counselling.",
+    source: "Buddy4Study / Foundation for Excellence"
+  },
+  {
+    name: "UGC Ishan Uday Special Scholarship for NER",
+    amount: "₹5,400/month (general UG) or ₹7,800/month (technical/professional)",
+    deadline: "2026-11-30",
+    eligibility: "First-year undergraduate students from the eight North Eastern states (Arunachal Pradesh, Assam, Manipur, Meghalaya, Mizoram, Nagaland, Sikkim, Tripura). Apply via National Scholarship Portal.",
+    source: "UGC / scholarships.gov.in (extended deadline)"
+  },
+  {
+    name: "PM-USP Central Sector Scheme of Scholarship (CSSS) for College & University Students",
+    amount: "₹12,000 per year for UG (first 3 years); higher for PG",
+    deadline: "2026-11-30",
+    eligibility: "Students in top percentile of Class 12 board exams pursuing regular undergraduate degree courses. Family income up to ₹4.5 lakh/year. Fresh & renewal applications open on National Scholarship Portal.",
+    source: "Ministry of Education / scholarships.gov.in"
+  }
+];
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function isUrgent(dateStr) {
+  const today = new Date('2026-11-22');
+  const deadline = new Date(dateStr);
+  const diffDays = (deadline - today) / (1000 * 60 * 60 * 24);
+  return diffDays <= 10 && diffDays >= 0;
+}
+
+function render(list) {
+  const grid = document.getElementById('grid');
+  if (list.length === 0) {
+    grid.innerHTML = '<div class="no-results">No scholarships match your search.</div>';
+    return;
+  }
+  grid.innerHTML = list.map(s => `
+    <div class="card">
+      <h2>${s.name}</h2>
+      <div class="amount">${s.amount}</div>
+      <div class="meta"><strong>Last Date:</strong> ${formatDate(s.deadline)}</div>
+      <div class="eligibility">${s.eligibility}</div>
+      <span class="deadline ${isUrgent(s.deadline) ? 'urgent' : ''}">Apply by: ${formatDate(s.deadline)}</span>
+      <div class="source">Source: ${s.source}</div>
+    </div>
+  `).join('');
+}
+
+function filterScholarships() {
+  const query = document.getElementById('search').value.toLowerCase();
+  const sortBy = document.getElementById('sort').value;
+
+  let filtered = scholarships.filter(s =>
+    s.name.toLowerCase().includes(query) ||
+    s.eligibility.toLowerCase().includes(query) ||
+    s.amount.toLowerCase().includes(query)
+  );
+
+  if (sortBy === 'deadline') {
+    filtered.sort((a, b) => new Date(a.deadline) - new Date(b.deadline));
+  } else if (sortBy === 'amount') {
+    filtered.sort((a, b) => {
+      const getNum = str => parseInt(str.replace(/[^0-9]/g, '').slice(0, 6)) || 0;
+      return getNum(b.amount) - getNum(a.amount);
+    });
+  } else {
+    filtered.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  render(filtered);
+}
+
+filterScholarships();
+</script>
+</body>
+</html>
